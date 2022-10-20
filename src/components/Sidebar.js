@@ -65,10 +65,23 @@ function Sidebar() {
         </Link>
       
       </li>
-
       <li className="nav-item">
         <Link
           className="nav-link collapsed"
+          to={"/portal/issue-request"}
+          data-toggle="collapse"
+          data-target="#collapseTwo"
+          aria-expanded="true"
+          aria-controls="collapseTwo"
+        >
+        <i className="fa fa-address-card"></i>
+          <span>Issue Request</span>
+        </Link>
+      
+      </li>
+      <li className="nav-item">
+        <Link
+          className="nav-link collapsed"       
           to={"/portal/issuedbooks"}
           data-toggle="collapse"
           data-target="#collapseTwo"

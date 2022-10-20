@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 function Books() {
@@ -111,6 +112,12 @@ function Books() {
                         <td>{data.status}</td>
                         <td>
                           <div className="text-center">
+                          <Link                             
+                              to={`/portal/edit-book/${data.id}`}
+                              className="btn btn-secondary m-1"
+                            >
+                              Edit
+                            </Link>
                             <button
                               onClick={() => deleteUser(data.id)}
                               className="btn btn-danger m-1"

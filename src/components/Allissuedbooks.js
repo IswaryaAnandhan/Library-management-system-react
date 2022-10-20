@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 function Allissuedbooks() {
@@ -13,7 +14,7 @@ function Allissuedbooks() {
       try {
         setLoading(true);
         const users = await axios.get(
-          "https://63463cc5745bd0dbd3791eaf.mockapi.io/teachers"
+          "https://63515e843e9fa1244e5cec50.mockapi.io/issuedbook"
         );
         setUsersData(users.data);
         setLoading(false);
@@ -32,7 +33,7 @@ function Allissuedbooks() {
       }).then((willDelete) => {
         if (willDelete) {
           axios
-            .delete(`https://63463cc5745bd0dbd3791eaf.mockapi.io/teachers/${id}`)
+            .delete(`https://63515e843e9fa1244e5cec50.mockapi.io/issuedbook/${id}`)
             .then(() => {
               getData();
             });
@@ -48,7 +49,7 @@ function Allissuedbooks() {
   
     const getData = () => {
       axios
-        .get(`https://63463cc5745bd0dbd3791eaf.mockapi.io/teachers`)
+        .get(`https://63515e843e9fa1244e5cec50.mockapi.io/issuedbook`)
         .then((getData) => {
           setUsersData(getData.data);
         });
@@ -86,27 +87,35 @@ function Allissuedbooks() {
                       </tr>
                     </thead>
                     <tfoot>
-                      <tr>
-                        <th>Serial No.</th>
-                        <th>Title</th>
+                    <tr>
+                        <th>Book</th>                      
                         <th>Author</th>
-                        <th>Copies</th>
-                        <th>Status</th>
+                        <th>Name</th>
+                        <th>Phone No</th>
+                        <th>Issued Date</th>
+                        <th>Return Date</th>
                         <th className="text-center">Action</th>
                       </tr>
                     </tfoot>
                     <tbody>
                       {userData.map((data) => {
                         return (
-                          <tr key={data.id}>
-                            <td>{data.id}</td>
+                          <tr key={data.id}>                          
+                            <td>{data.title}</td>
+                            <td>{data.author}</td>
                             <td>{data.name}</td>
-                            <td>{data.age}</td>
-                            <td>{data.department}</td>
                             <td>{data.phoneno}</td>
-                            <td>{data.gender}</td>
+                            <td>{data.issued}</td>
+                            <td>{data.return}</td>
                             <td>
                               <div className="text-center">
+                            
+                              <Link                             
+                              to={`/portal/edit-issue/${data.id}`}
+                              className="btn btn-secondary m-1"
+                            >
+                              Edit
+                            </Link>
                                 <button
                                   onClick={() => deleteUser(data.id)}
                                   className="btn btn-danger m-1"

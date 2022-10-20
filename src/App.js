@@ -9,6 +9,9 @@ import Home from "./components/Home";
 import Books from "./components/Books";
 import Addbooks from "./components/Addbooks";
 import Allissuedbooks from "./components/Allissuedbooks";
+import Editissue from "./components/Editissue";
+import Editbook from "./components/Editbook";
+import Issuerequest from "./components/Issuerequest";
 
 function App() {
   return (
@@ -20,7 +23,10 @@ function App() {
           <Route path="home" element={<Home />}></Route>
           <Route path="books" element={<Books />}></Route>
           <Route path="Addbooks" element={<Addbooks />}></Route>
+          <Route path="edit-book/:id" element={<Editbook />}></Route>       
+          <Route path="issue-request" element={<Issuerequest />}></Route>
           <Route path="issuedbooks" element={<Allissuedbooks />}></Route>
+          <Route path="edit-issue/:id" element={<Editissue />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
