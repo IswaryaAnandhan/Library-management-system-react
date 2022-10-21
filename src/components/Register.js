@@ -1,15 +1,19 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../Usercontext";
 
 function Register() {
+  const {setReg} = useContext(UserContext);
   let navigate = useNavigate();
   let formik = useFormik({
     initialValues: {
       name: "",
       email: "",
+      phoneno:"",
       password: "",
+   
     },
     validate: (values) => {
       const errors = {};
@@ -25,6 +29,10 @@ function Register() {
       ) {
         errors.email = "Invalid email address";
       }
+      if (values.phoneno.toString().length !== 10) {
+        errors.phoneno = "Please enter the valid Phone number";
+      }
+
       if (!values.password) {
         errors.password = "Please enter the password";
       } else if (values.password.length < 8) {
@@ -42,6 +50,7 @@ function Register() {
           navigate("/");
         }
         alert("Successfully Registerd & wait for Admin Confirmation");
+        setReg({ name: values.name , email: values.email, phoneno: values.phoneno});
       } catch (error) {
         console.log(error);
         alert("Something went wrong");
@@ -112,6 +121,31 @@ function Register() {
                       </span>
                     ) : null}
                   </div>
+                
+              <div className="form-group row">
+              <div className="col-lg-6">
+                <input
+                  name="phoneno"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.phoneno}
+                  placeholder="Phone number"
+                  className={`form-control  form-control-user ${
+                    formik.touched.phoneno && formik.errors.phoneno
+                      ? "error-box"
+                      : ""
+                  } ${
+                    formik.touched.phoneno && !formik.errors.phoneno
+                      ? "success-box"
+                      : null
+                  }`}
+                />
+  
+                {formik.touched.phoneno && formik.errors.phoneno ? (
+                  <span style={{ color: "red" }}>{formik.errors.phoneno}</span>
+                ) : null}
+              </div>
+            </div>
                   <div className="form-group row">
                     <div className="col-sm-6 mb-3 mb-sm-0">
                       <input
