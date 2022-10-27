@@ -41,7 +41,9 @@ function Login() {
           <div className="card o-hidden border-0 shadow-lg my-5">
             <div className="card-body p-0">
               <div className="row">
-                <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                <div className="col-lg-6 d-none d-lg-block">
+                <img className="bg-login-image" src="./image/login.jpg" alt="login"/>
+                </div>
                 <div className="col-lg-6">
                   <div className="p-5">
                     <div className="text-center">
