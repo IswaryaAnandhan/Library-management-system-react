@@ -49,7 +49,7 @@ function Register() {
         {
           navigate("/");
         }
-        alert("Successfully Registerd & wait for Admin Confirmation");
+        alert("Register Successfully");
         setReg({ name: values.name , email: values.email, phoneno: values.phoneno});
       } catch (error) {
         console.log(error);

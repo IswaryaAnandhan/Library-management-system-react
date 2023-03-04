@@ -24,6 +24,8 @@ function Login() {
       }
       if (!values.password) {
         errors.password = "Password  missing";
+      }else if (values.password.length < 8) {
+        errors.password = "must be 8 characters";
       }
       return errors;
     },
